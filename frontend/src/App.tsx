@@ -79,14 +79,14 @@ function GamePage() {
             topics: log.topics,
           })
           if (decodedEvent.eventName === 'GameResult') {
-            const { wasHonest, realCard, claimedCard } = decodedEvent.args as { wasHonest: boolean, realCard: bigint, claimedCard: bigint }
-            const realCardDisplay = getCardDisplay(Number(realCard))
-            const claimedCardDisplay = getCardDisplay(Number(claimedCard))
+            const { wasHonest, realCard, claimedCard } = decodedEvent.args as { wasHonest: boolean, realCard: bigint, claimedCard: bigint };
+            const realCardDisplay = getCardDisplay(Number(realCard));
+            const claimedCardDisplay = getCardDisplay(Number(claimedCard));
             
             if (wasHonest) {
-              setResult(`✅ The system was honest!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n😊 The system didn't lie this time!`)
+              setResult(`✅ The system was honest!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n😊 The system didn't lie this time!`);
             } else {
-              setResult(`🎉 Gotcha! The system was lying!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n🏆 You successfully caught the system's bluff!`)
+              setResult(`🎉 Gotcha! The system was lying!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n🏆 You successfully caught the system's bluff!`);
             }
             gameResultFound = true
             break
