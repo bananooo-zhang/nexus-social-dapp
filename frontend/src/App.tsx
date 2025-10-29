@@ -79,7 +79,12 @@ function GamePage() {
             topics: log.topics,
           })
           if (decodedEvent.eventName === 'GameResult') {
-            const { wasHonest, realCard, claimedCard } = decodedEvent.args as { wasHonest: boolean, realCard: bigint, claimedCard: bigint };
+            // 使用 any 类型来避免严格的类型检查，这是解决 Vercel 编译问题的关键
+            const args = decodedEvent.args as any;
+            const wasHonest = args.wasHonest as boolean;
+            const realCard = args.realCard;
+            const claimedCard = args.claimedCard;
+
             const realCardDisplay = getCardDisplay(Number(realCard));
             const claimedCardDisplay = getCardDisplay(Number(claimedCard));
             
