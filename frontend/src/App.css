@@ -1,0 +1,313 @@
+/* Game Page Styles */
+
+.game-page-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-3px);
+}
+
+.game-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 420px;
+}
+
+.connect-button-wrapper.top-right {
+  position: absolute;
+  top: 20px;
+  left: 1700px;
+  z-index: 100;
+}
+
+.game-title {
+  font-size: 2rem;
+  text-align: center;
+  color: #667eea;
+  margin-bottom: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.game-subtitle {
+  text-align: center;
+  color: #718096;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* RainbowKit Button Style Overrides */
+.connect-button-wrapper button {
+  max-width: 100% !important;
+  font-size: 1rem !important;
+}
+
+.connect-button-wrapper [data-testid="rk-account-button"],
+.connect-button-wrapper [data-testid="rk-connect-button"] {
+  max-width: 100% !important;
+  font-size: 0.95rem !important;
+  padding: 10px 16px !important;
+}
+
+.connect-button-wrapper,
+.game-content {
+  width: 100%;
+}
+
+.please-connect-section {
+  padding: 40px 0;
+  text-align: center;
+  color: #718096;
+  font-weight: 500;
+}
+
+.claim-section {
+  background: #f7fafc;
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+.claim-display {
+  text-align: center;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.claim-display h2 {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.card-value {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #667eea;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.08);
+  margin: 16px 0;
+  line-height: 1;
+}
+
+.hint {
+  color: #718096;
+  font-size: 0.9rem;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.challenge-btn {
+  width: 100%;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.challenge-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.challenge-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.result-section {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-top: 24px;
+}
+
+.result-section.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.result-section.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.instructions {
+  background: #f7fafc;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 24px;
+  border-left: 4px solid #667eea;
+}
+
+.instructions h3 {
+  font-size: 1rem;
+  color: #2d3748;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.instructions p {
+  color: #718096;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 8px 0;
+}
+
+/* Responsive Styles for Game Page */
+@media (max-width: 600px) {
+  .game-page-container {
+    padding: 0;
+    justify-content: flex-start;
+  }
+  
+  .back-button {
+    top: 15px;
+    left: 15px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .connect-button-wrapper.top-right {
+    top: 15px;
+    right: 15px;
+  }
+
+  .game-card-container {
+    padding: 20px 16px;
+    max-width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    justify-content: flex-start;
+  }
+  
+  .game-title {
+    font-size: 1.5rem;
+    margin-top: 40px;
+  }
+  
+  .game-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .card-value {
+    font-size: 3rem;
+  }
+  
+  .claim-display h2 {
+    font-size: 0.9rem;
+  }
+  
+  .claim-display {
+    padding: 24px 16px;
+  }
+  
+  .challenge-btn {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+  
+  .instructions {
+    padding: 16px;
+  }
+  
+  .instructions h3 {
+    font-size: 0.95rem;
+  }
+  
+  .instructions p {
+    font-size: 0.85rem;
+  }
+  
+  .result-section {
+    padding: 16px;
+  }
+  
+  /* Mobile Wallet Button Styles */
+  .connect-button-wrapper {
+    width: auto;
+    margin: 16px 0;
+  }
+  
+  .connect-button-wrapper button {
+    font-size: 0.85rem !important;
+    padding: 8px 12px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  .connect-button-wrapper [data-testid="rk-account-button"],
+  .connect-button-wrapper [data-testid="rk-connect-button"] {
+    font-size: 0.85rem !important;
+    padding: 8px 12px !important;
+  }
+  
+  .connect-button-wrapper button > div {
+    font-size: 0.85rem !important;
+  }
+}
+
