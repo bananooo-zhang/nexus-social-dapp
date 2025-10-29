@@ -40,7 +40,7 @@ function GamePage() {
       setSystemClaim(Number(claim))
     } catch (err) {
       console.error('Failed to load claim:', err)
-      setError("Could not load system's claim. Please check your network connection.")
+      setError('Failed to load system\'s claim. Please check your network connection.')
     }
   }
 
@@ -50,6 +50,7 @@ function GamePage() {
     }
   }, [isConnected, publicClient, address])
 
+  // 挑战系统
   const handleChallenge = async () => {
     if (!walletClient || !publicClient || !address) return
 
@@ -83,9 +84,9 @@ function GamePage() {
             const claimedCardDisplay = getCardDisplay(Number(claimedCard))
             
             if (wasHonest) {
-              setResult(`✅ The system was honest!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n😊 The system told the truth this time!`)
+              setResult(`✅ The system was honest!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n😊 The system didn't lie this time!`)
             } else {
-              setResult(`🎉 Gotcha! The system was lying!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n🏆 You successfully called the bluff!`)
+              setResult(`🎉 Gotcha! The system was lying!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n🏆 You successfully caught the system's bluff!`)
             }
             gameResultFound = true
             break
@@ -129,17 +130,17 @@ function GamePage() {
       </div>
 
       <div className="game-card-container">
-        <h1 className="game-title">🎲 The Confidential Game</h1>
-        <p className="game-subtitle">Nexus Social - On-Chain Confidential Challenge</p>
+        <h1 className="game-title">🎲 Confidential Game</h1>
+        <p className="game-subtitle">Nexus Social - On-chain Confidential Challenge</p>
 
         {isConnected ? (
           <div className="game-content">
             <div className="claim-section">
               {systemClaim > 0 && (
                 <div className="claim-display">
-                  <h2>System Claims</h2>
+                  <h2>System's Claim</h2>
                   <div className="card-value">{getCardDisplay(systemClaim)}</div>
-                  <p className="hint">Do you believe it? Hit challenge below!</p>
+                  <p className="hint">Do you believe it? Click below to challenge!</p>
                 </div>
               )}
 
@@ -165,15 +166,15 @@ function GamePage() {
             
             <div className="instructions">
               <h3>How to Play</h3>
-              <p>1. The system secretly holds a card.</p>
-              <p>2. It makes a public claim about its card.</p>
-              <p>3. You challenge whether it's telling the truth.</p>
-              <p>4. FHE technology ensures a fair result.</p>
+              <p>1. The system has secretly chosen a card.</p>
+              <p>2. The system publicly claims it has a specific card.</p>
+              <p>3. You can challenge whether the system is telling the truth.</p>
+              <p>4. FHE technology ensures the fairness of the result.</p>
             </div>
           </div>
         ) : (
           <div className="please-connect-section">
-            <p>Please connect your wallet to start.</p>
+            <p>Please connect your wallet to start the game</p>
           </div>
         )}
       </div>
