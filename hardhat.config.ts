@@ -11,10 +11,23 @@ import "solidity-coverage";
 
 import "./tasks/debug";
 
-// 使用一个公开的、仅供测试的私钥
-const SEPOLIA_PRIVATE_KEY = "0x465d722c4e31d0ce6b89a853eaedc98b599ebcfa53467df2dcaf87a70c5b349e";
-const SEPOLIA_RPC_URL = "https://rpc.ankr.com/eth_sepolia/e91a963d47b4af04730c341946c7f6d32c5bed6f03ae7d2fbebaadf1659efd09";
+// 从 .env 文件加载环境变量
+const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
+const SEPOLIA_PRIVATE_KEY = process.env.SEPOLIA_PRIVATE_KEY;
 
+// 校验环境变量是否存在
+if (!SEPOLIA_RPC_URL) {
+  throw new Error(
+    "请在 .env 文件中设置 SEPOLIA_RPC_URL"
+  );
+}
+
+if (!SEPOLIA_PRIVATE_KEY) {
+  throw new Error(
+    "请在 .env 文件中设置 SEPOLIA_PRIVATE_KEY"
+  );
+}
+        
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
   solidity: "0.8.24",
