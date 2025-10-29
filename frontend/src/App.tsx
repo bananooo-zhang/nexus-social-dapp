@@ -12,7 +12,7 @@ const contractAbi = parseAbi([
   "event GameResult(address indexed player, bool wasHonest, uint8 realCard, uint8 claimedCard)"
 ])
 
-// Card mapping
+// 卡牌映射
 const CARD_NAMES: { [key: number]: string } = {
   1: 'A', 11: 'J', 12: 'Q', 13: 'K'
 }
@@ -22,13 +22,13 @@ function GamePage() {
   const { address, isConnected } = useAccount()
   const publicClient = usePublicClient()
   const { data: walletClient } = useWalletClient()
-
+  
   const [systemClaim, setSystemClaim] = useState<number>(0)
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<string>('')
   const [error, setError] = useState<string>('')
 
-  // Fetch the system's claimed card
+  // 获取系统叫牌
   const loadSystemClaim = async () => {
     if (!publicClient) return
     try {
@@ -40,7 +40,7 @@ function GamePage() {
       setSystemClaim(Number(claim))
     } catch (err) {
       console.error('Failed to load claim:', err)
-      setError('Failed to load system claim. Please check your network connection.')
+      setError("Could not load system's claim. Please check your network connection.")
     }
   }
 
@@ -50,7 +50,6 @@ function GamePage() {
     }
   }, [isConnected, publicClient, address])
 
-  // Challenge the system
   const handleChallenge = async () => {
     if (!walletClient || !publicClient || !address) return
 
@@ -60,14 +59,14 @@ function GamePage() {
       setResult('')
 
       setResult('🎲 Revealing the result...')
-
+      
       const hash = await walletClient.writeContract({
         address: CONTRACT_ADDRESS,
         abi: contractAbi,
         functionName: 'challenge',
         account: address,
       })
-
+      
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
 
       let gameResultFound = false
@@ -82,9 +81,9 @@ function GamePage() {
             const { wasHonest, realCard, claimedCard } = decodedEvent.args as { wasHonest: boolean, realCard: bigint, claimedCard: bigint }
             const realCardDisplay = getCardDisplay(Number(realCard))
             const claimedCardDisplay = getCardDisplay(Number(claimedCard))
-
+            
             if (wasHonest) {
-              setResult(`✅ The system was honest!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n😊 The system wasn't lying this time!`)
+              setResult(`✅ The system was honest!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n😊 The system told the truth this time!`)
             } else {
               setResult(`🎉 Gotcha! The system was lying!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n🏆 You successfully called the bluff!`)
             }
@@ -97,13 +96,13 @@ function GamePage() {
       }
 
       if (!gameResultFound) {
-        setError("Failed to parse game result. Please check the contract events.")
+        setError("Failed to parse game result. Please check the contract event.")
       }
-
+      
       await loadSystemClaim()
     } catch (err: any) {
       console.error('Challenge error:', err)
-      setError(`Challenge failed: ${err.shortMessage || err.message || 'An unknown error occurred'}`)
+      setError(`Challenge failed: ${err.shortMessage || err.message || 'Unknown error'}`)
       setResult('')
     } finally {
       setLoading(false)
@@ -119,8 +118,9 @@ function GamePage() {
       <button className="back-button" onClick={() => navigate('/')}>
         ← Back to Home
       </button>
+
       <div className="connect-button-wrapper top-right">
-        <ConnectButton
+        <ConnectButton 
           label="Connect Wallet"
           accountStatus="address"
           chainStatus="icon"
@@ -129,7 +129,7 @@ function GamePage() {
       </div>
 
       <div className="game-card-container">
-        <h1 className="game-title">🎲 Confidential Game</h1>
+        <h1 className="game-title">🎲 The Confidential Game</h1>
         <p className="game-subtitle">Nexus Social - On-Chain Confidential Challenge</p>
 
         {isConnected ? (
@@ -137,21 +137,21 @@ function GamePage() {
             <div className="claim-section">
               {systemClaim > 0 && (
                 <div className="claim-display">
-                  <h2>System's Claim</h2>
+                  <h2>System Claims</h2>
                   <div className="card-value">{getCardDisplay(systemClaim)}</div>
-                  <p className="hint">Do you believe it? Click below to challenge!</p>
+                  <p className="hint">Do you believe it? Hit challenge below!</p>
                 </div>
               )}
 
-              <button
-                className="challenge-btn"
+              <button 
+                className="challenge-btn" 
                 onClick={handleChallenge}
                 disabled={loading || systemClaim === 0}
               >
                 {loading ? 'Challenging...' : '🎯 Challenge!'}
               </button>
             </div>
-
+            
             {result && (
               <div className="result-section success" style={{ whiteSpace: 'pre-wrap' }}>
                 {result}
@@ -162,18 +162,18 @@ function GamePage() {
                 ❌ {error}
               </div>
             )}
-
+            
             <div className="instructions">
               <h3>How to Play</h3>
-              <p>1. The system has secretly chosen a card.</p>
-              <p>2. It publicly claims to have a certain card.</p>
-              <p>3. You can challenge the system to see if it's lying.</p>
-              <p>4. FHE technology ensures the result is fair and verifiable.</p>
+              <p>1. The system secretly holds a card.</p>
+              <p>2. It makes a public claim about its card.</p>
+              <p>3. You challenge whether it's telling the truth.</p>
+              <p>4. FHE technology ensures a fair result.</p>
             </div>
           </div>
         ) : (
           <div className="please-connect-section">
-            <p>Please connect your wallet to start the game</p>
+            <p>Please connect your wallet to start.</p>
           </div>
         )}
       </div>
