@@ -11,26 +11,26 @@ function LandingPage() {
         <div className="hero-content">
           <div className="hero-badge">Powered by Zama FHE</div>
           <h1 className="hero-title">
-            为加密社区打造的
+            The Social Gaming Platform
             <br />
-            <span className="highlight">社交游戏平台</span>
+            <span className="highlight">for Crypto Communities</span>
           </h1>
           <p className="hero-subtitle">
-            Nexus Social 是首个基于全同态加密（FHE）技术的 Web3 社交游戏平台。
+            Nexus Social is the first Web3 social gaming platform powered by Fully Homomorphic Encryption (FHE).
             <br />
-            我们让链上游戏真正实现信息机密性，为加密社区活动提供全新解决方案。
+            We bring true confidentiality to on-chain gaming, offering a novel solution for crypto community engagement.
           </p>
           <div className="hero-buttons">
             <button className="btn-primary" onClick={() => navigate('/game')}>
-              🎮 立即体验 Demo
+              🎮 Play Demo
             </button>
-            <a 
-              className="btn-secondary" 
-              href="https://github.com/yourusername/dark-cards-dapp" 
-              target="_blank" 
+            <a
+              className="btn-secondary"
+              href="https://github.com/bananooo-zhang/nexus-social-dapp"
+              target="_blank"
               rel="noopener noreferrer"
             >
-              📖 查看代码
+              📖 View Code
             </a>
           </div>
         </div>
@@ -46,22 +46,22 @@ function LandingPage() {
       {/* Problem Section */}
       <section className="problem-section">
         <div className="container">
-          <h2 className="section-title">社区游戏活动的困境</h2>
+          <h2 className="section-title">The Challenges of Community Gaming Events</h2>
           <div className="problem-grid">
             <div className="problem-card">
               <div className="problem-icon">📊</div>
-              <h3>数据统计难，公平性受疑</h3>
-              <p>游戏排名和参与情况多依赖手动统计，易出错、不透明，引发社区成员对公平性的质疑。</p>
+              <h3>Difficult & Untrusted Data Tracking</h3>
+              <p>Game rankings and participation often rely on manual, error-prone, and opaque statistics, leading to doubts about fairness among community members.</p>
             </div>
             <div className="problem-card">
               <div className="problem-icon">💎</div>
-              <h3>贡献无沉淀，价值被忽视</h3>
-              <p>用户的参与行为无法被长期记录和量化，其对社区的贡献价值被严重低估和忽视。</p>
+              <h3>Contributions Go Unrecorded</h3>
+              <p>User engagement is rarely tracked long-term, undervaluing their contributions and diminishing the perceived value of their participation.</p>
             </div>
             <div className="problem-card">
               <div className="problem-icon">🧩</div>
-              <h3>参与门槛高，体验碎片化</h3>
-              <p>社区活动工具分散在不同平台，用户每次参与都需要重新学习，无法形成统一、连贯的参与体验。</p>
+              <h3>High Barriers & Fragmented Experience</h3>
+              <p>Community tools are scattered across various platforms, forcing users to learn new systems for each event and preventing a cohesive experience.</p>
             </div>
           </div>
         </div>
@@ -70,42 +70,48 @@ function LandingPage() {
       {/* Solution Section */}
       <section className="solution-section">
         <div className="container">
-          <h2 className="section-title">Nexus Social 解决方案</h2>
+          <h2 className="section-title">The Nexus Social Solution</h2>
           <div className="solution-content">
             <div className="solution-text">
-              <h3>🎯 定位：加密社区活动首选平台</h3>
+              <h3>🎯 Our Mission: The Go-To Platform for Crypto Community Events</h3>
               <p>
-                Nexus Social 不是一个简单的游戏，而是一个<strong>社交游戏平台</strong>。
-                我们专注于为加密项目社区提供有趣、公平、易上手的社交活动工具。
+                Nexus Social is more than just a game; it's a <strong>social gaming platform</strong>. We focus on providing fun, fair, and accessible tools for crypto projects to engage their communities.
               </p>
-              <ul className="solution-list">
-                <li>
-                  <strong>💎 FHE 技术保障</strong>
-                  <p>利用 Zama 全同态加密技术，实现真正的链上信息机密性，确保游戏过程公平透明。</p>
-                </li>
-                <li>
-                  <strong>🧩 一站式游戏中心，无缝参与</strong>
-                  <p>为所有社区活动提供统一的游戏平台，用户只需学习一次，即可无缝参与不同社区的活动。</p>
-                </li>
-                <li>
-                  <strong>📈 贡献可追溯，数据永存证</strong>
-                  <p>所有参与行为都将记录在链上，形成透明、不可篡改的贡献证明，彻底解决手动统计的信任问题。</p>
-                </li>
-                <li>
-                  <strong>🌐 跨社区身份，价值再发现</strong>
-                  <p>用户的参与数据构成了TA的链上声誉。无论社区如何变迁，声誉永存，激励用户长期活跃。</p>
-                </li>
-              </ul>
+              <h3>✨ Core Advantage: FHE-Powered On-Chain Confidentiality</h3>
+              <p>
+                Leveraging Zama's <strong>Fully Homomorphic Encryption (FHE)</strong>, Nexus Social achieves absolute confidentiality for on-chain information. This means crucial game data (like player hands) remains encrypted on-chain and can only be verified under specific conditions, eliminating cheating and ensuring fairness.
+              </p>
+              <h3>🚀 Our Vision: Sustainable Growth Through a Platform Ecosystem</h3>
+              <p>
+                We aim to be the cornerstone of community activities, offering a scalable platform that supports diverse games and interactions, building a vibrant Web3 social ecosystem.
+              </p>
             </div>
-            <div className="solution-visual">
-              <div className="tech-badge">
-                <div className="tech-icon">🔐</div>
-                <div className="tech-text">
-                  <div className="tech-label">核心技术</div>
-                  <div className="tech-name">Full Homomorphic Encryption</div>
-                </div>
-              </div>
-            </div>
+            <ul className="solution-features">
+              <li>
+                <strong>🔒 Absolute On-Chain Confidentiality</strong>
+                <p>Powered by FHE, all core game data is processed on-chain while encrypted, preventing cheating and information leaks.</p>
+              </li>
+              <li>
+                <strong>🧩 One-Stop Gaming Hub for Seamless Participation</strong>
+                <p>A unified platform for all community events. Learn once and seamlessly join activities across different communities.</p>
+              </li>
+              <li>
+                <strong>📈 Verifiable Contributions with On-Chain Proof</strong>
+                <p>All participation is recorded on-chain, creating a transparent, immutable record of contribution that solves the trust issues of manual tracking.</p>
+              </li>
+              <li>
+                <strong>🌐 Cross-Community Identity & Reputation</strong>
+                <p>Your participation data builds your on-chain reputation. This reputation persists across communities, incentivizing long-term engagement.</p>
+              </li>
+              <li>
+                <strong>🤝 Social-First Design</strong>
+                <p>Simple rules and a fast pace make our games perfect for fostering a lively community atmosphere, rather than intense, high-skill competitions.</p>
+              </li>
+              <li>
+                <strong>💡 Flexible & Scalable</strong>
+                <p>Our platform architecture is designed to easily integrate more FHE-powered games and custom community features in the future.</p>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -113,27 +119,27 @@ function LandingPage() {
       {/* How It Works Section */}
       <section className="how-it-works-section">
         <div className="container">
-          <h2 className="section-title">技术核心：首个游戏示例</h2>
+          <h2 className="section-title">How It Works: Our First Game Demo</h2>
           <p className="section-subtitle">
-            我们通过第一个机密社交游戏“暗牌”来展示 Nexus Social 的工作原理，以及 FHE 技术如何保障公平性。
+            We use our first confidential social game, "Dark Cards," to demonstrate how Nexus Social and FHE technology ensure fairness.
           </p>
           <div className="steps">
             <div className="step">
               <div className="step-number">1</div>
-              <h3>加密手牌</h3>
-              <p>系统为一局游戏生成加密手牌并上链，在整个游戏过程中，除了合约，任何人都无法查看真实手牌。</p>
+              <h3>Encrypted Hands</h3>
+              <p>The system generates an encrypted hand for a game round and stores it on-chain. No one can see the real hand except the contract.</p>
             </div>
             <div className="step-arrow">→</div>
             <div className="step">
               <div className="step-number">2</div>
-              <h3>公开声称</h3>
-              <p>系统对自己的手牌进行公开声称（可能诚实，也可能说谎），社区成员可以根据自己的判断决定是否挑战。</p>
+              <h3>Public Claims</h3>
+              <p>The system makes a public claim about its hand (which may be true or false). Community members can then decide whether to challenge this claim.</p>
             </div>
             <div className="step-arrow">→</div>
             <div className="step">
               <div className="step-number">3</div>
-              <h3>机密验证</h3>
-              <p>智能合约在链上对加密数据进行运算（例如 FHE.eq()），直接在密文上验证声称是否属实，并公布结果。</p>
+              <h3>Confidential Verification</h3>
+              <p>The smart contract performs computations on the encrypted data (e.g., using FHE.eq()) to verify the claim's truthfulness directly on the ciphertext and reveals the result.</p>
             </div>
           </div>
         </div>
@@ -142,37 +148,37 @@ function LandingPage() {
       {/* Features Section */}
       <section className="features-section">
         <div className="container">
-          <h2 className="section-title">核心优势</h2>
+          <h2 className="section-title">Core Advantages</h2>
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-icon">🛡️</div>
-              <h3>绝对公平</h3>
-              <p>利用 FHE 技术，游戏核心数据全程在链上加密运算，彻底杜绝作弊与信息泄露，保障每一次博弈的绝对公正。</p>
+              <h3>Absolute Fairness</h3>
+              <p>With FHE, core game data is encrypted on-chain from start to finish, eliminating cheating and ensuring the integrity of every move.</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">⚡</div>
-              <h3>简单易玩</h3>
-              <p>我们专注于轻量化的社交玩法，规则简单直观，让任何社区成员都能轻松加入，享受游戏带来的纯粹乐趣。</p>
+              <h3>Easy to Play</h3>
+              <p>We focus on lightweight social games with simple, intuitive rules, allowing any community member to join and enjoy the fun.</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">🌐</div>
-              <h3>Web3 原生</h3>
-              <p>项目完全构建于去中心化网络之上，逻辑由智能合约自动执行，与主流钱包无缝集成，提供无需许可的参与体验。</p>
+              <h3>Web3 Native</h3>
+              <p>Built entirely on decentralized networks, with logic executed by smart contracts and seamless integration with mainstream wallets for a permissionless experience.</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">🎁</div>
-              <h3>激励机制</h3>
-              <p>平台原生支持项目方自定义奖励机制，无论是同质化代币还是纪念版 NFT，都能成为激活社区、回馈贡献者的有效工具。</p>
+              <h3>Incentive Ready</h3>
+              <p>The platform natively supports custom reward mechanisms, from fungible tokens to commemorative NFTs, empowering projects to engage their communities.</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">🤝</div>
-              <h3>社区合作</h3>
-              <p>我们不仅仅是工具，更是社区的合作伙伴。我们为项目方提供灵活的活动配置选项，致力于成为 Web3 社区活动的首选平台。</p>
+              <h3>Community Focused</h3>
+              <p>We are more than a tool; we are a partner. We offer flexible event configurations, aiming to become the go-to platform for Web3 community events.</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">📊</div>
-              <h3>持续增长</h3>
-              <p>通过聚焦社交和贡献沉淀，Nexus Social 的价值与代币价格解耦，为项目社区打造一个真正可持续的用户活跃和增长模型。</p>
+              <h3>Sustainable Growth</h3>
+              <p>By focusing on social interaction and contribution, Nexus Social's value is decoupled from token hype, creating a sustainable model for user growth.</p>
             </div>
           </div>
         </div>
@@ -181,36 +187,25 @@ function LandingPage() {
       {/* CTA Section */}
       <section className="cta-section">
         <div className="container">
-          <h2 className="cta-title">准备好体验未来了吗？</h2>
-          <p className="cta-subtitle">立即尝试我们的 MVP Demo，感受 FHE 技术带来的链上机密游戏体验</p>
-          <button className="btn-primary-large" onClick={() => navigate('/game')}>
-            🚀 开始游戏
+          <h2 className="cta-title">Ready to Join Nexus Social?</h2>
+          <p className="cta-subtitle">Experience the next generation of on-chain social gaming, powered by FHE!</p>
+          <button className="btn-primary" onClick={() => navigate('/game')}>
+            🎮 Play Demo
           </button>
-          <div className="cta-info">
-            <p>部署在 Sepolia 测试网 | 需要连接钱包 | 完全开源</p>
-          </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-left">
-              <h3>Nexus Social</h3>
-              <p>基于 Zama FHE 的 Web3 社交游戏平台</p>
-            </div>
-            <div className="footer-links">
-              <a href="https://github.com/yourusername/dark-cards-dapp" target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-              <a href="https://sepolia.etherscan.io/address/0xc82996db14d66c70586E1670d44A0E89cED4aced" target="_blank" rel="noopener noreferrer">
-                合约地址
-              </a>
-              <a href="https://docs.zama.ai/" target="_blank" rel="noopener noreferrer">
-                Zama 文档
-              </a>
-            </div>
+        <div className="container footer-content">
+          <div className="footer-left">
+            <h3>Nexus Social</h3>
+            <p>The Web3 Social Gaming Platform Powered by Zama FHE</p>
+          </div>
+          <div className="footer-links">
+            <a href="https://github.com/bananooo-zhang/nexus-social-dapp" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://sepolia.etherscan.io/address/0xc82996db14d66c70586E1670d44A0E89cED4aced" target="_blank" rel="noopener noreferrer">Contract</a>
+            <a href="https://docs.zama.ai/protocol" target="_blank" rel="noopener noreferrer">Zama Docs</a>
           </div>
         </div>
       </footer>

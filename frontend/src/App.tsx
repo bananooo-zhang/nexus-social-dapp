@@ -12,7 +12,7 @@ const contractAbi = parseAbi([
   "event GameResult(address indexed player, bool wasHonest, uint8 realCard, uint8 claimedCard)"
 ])
 
-// 卡牌映射
+// Card mapping
 const CARD_NAMES: { [key: number]: string } = {
   1: 'A', 11: 'J', 12: 'Q', 13: 'K'
 }
@@ -22,12 +22,13 @@ function GamePage() {
   const { address, isConnected } = useAccount()
   const publicClient = usePublicClient()
   const { data: walletClient } = useWalletClient()
-  
+
   const [systemClaim, setSystemClaim] = useState<number>(0)
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<string>('')
   const [error, setError] = useState<string>('')
 
+  // Fetch the system's claimed card
   const loadSystemClaim = async () => {
     if (!publicClient) return
     try {
@@ -39,7 +40,7 @@ function GamePage() {
       setSystemClaim(Number(claim))
     } catch (err) {
       console.error('Failed to load claim:', err)
-      setError('无法加载系统叫牌，请检查网络连接。')
+      setError('Failed to load system claim. Please check your network connection.')
     }
   }
 
@@ -49,21 +50,24 @@ function GamePage() {
     }
   }, [isConnected, publicClient, address])
 
+  // Challenge the system
   const handleChallenge = async () => {
     if (!walletClient || !publicClient || !address) return
 
     try {
       setLoading(true)
       setError('')
-      setResult('🎲 正在揭晓结果...')
-      
+      setResult('')
+
+      setResult('🎲 Revealing the result...')
+
       const hash = await walletClient.writeContract({
         address: CONTRACT_ADDRESS,
         abi: contractAbi,
         functionName: 'challenge',
         account: address,
       })
-      
+
       const receipt = await publicClient.waitForTransactionReceipt({ hash })
 
       let gameResultFound = false
@@ -78,11 +82,11 @@ function GamePage() {
             const { wasHonest, realCard, claimedCard } = decodedEvent.args as { wasHonest: boolean, realCard: bigint, claimedCard: bigint }
             const realCardDisplay = getCardDisplay(Number(realCard))
             const claimedCardDisplay = getCardDisplay(Number(claimedCard))
-            
+
             if (wasHonest) {
-              setResult(`✅ 系统诚实！\n\n🎴 系统声称: ${claimedCardDisplay}\n🎴 真实手牌: ${realCardDisplay}\n\n😊 这次系统没有撒谎！`)
+              setResult(`✅ The system was honest!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n😊 The system wasn't lying this time!`)
             } else {
-              setResult(`🎉 抓到了！系统在说谎！\n\n🎴 系统声称: ${claimedCardDisplay}\n🎴 真实手牌: ${realCardDisplay}\n\n🏆 你成功识破了系统的谎言！`)
+              setResult(`🎉 Gotcha! The system was lying!\n\n🎴 System Claimed: ${claimedCardDisplay}\n🎴 Real Card: ${realCardDisplay}\n\n🏆 You successfully called the bluff!`)
             }
             gameResultFound = true
             break
@@ -93,13 +97,13 @@ function GamePage() {
       }
 
       if (!gameResultFound) {
-        setError("未能解析游戏结果，请检查合约事件。")
+        setError("Failed to parse game result. Please check the contract events.")
       }
-      
+
       await loadSystemClaim()
     } catch (err: any) {
       console.error('Challenge error:', err)
-      setError(`挑战失败: ${err.shortMessage || err.message || '未知错误'}`)
+      setError(`Challenge failed: ${err.shortMessage || err.message || 'An unknown error occurred'}`)
       setResult('')
     } finally {
       setLoading(false)
@@ -113,12 +117,11 @@ function GamePage() {
   return (
     <div className="game-page-container">
       <button className="back-button" onClick={() => navigate('/')}>
-        ← 返回首页
+        ← Back to Home
       </button>
-
       <div className="connect-button-wrapper top-right">
-        <ConnectButton 
-          label="连接钱包"
+        <ConnectButton
+          label="Connect Wallet"
           accountStatus="address"
           chainStatus="icon"
           showBalance={false}
@@ -126,27 +129,29 @@ function GamePage() {
       </div>
 
       <div className="game-card-container">
-        <h1 className="game-title">🎲 机密游戏</h1>
-        <p className="game-subtitle">Nexus Social - 链上机密挑战</p>
+        <h1 className="game-title">🎲 Confidential Game</h1>
+        <p className="game-subtitle">Nexus Social - On-Chain Confidential Challenge</p>
 
         {isConnected ? (
           <div className="game-content">
             <div className="claim-section">
-              <div className="claim-display">
-                <h2>系统声称</h2>
-                <div className="card-value">{getCardDisplay(systemClaim)}</div>
-                <p className="hint">你相信吗？点击下方挑战！</p>
-              </div>
+              {systemClaim > 0 && (
+                <div className="claim-display">
+                  <h2>System's Claim</h2>
+                  <div className="card-value">{getCardDisplay(systemClaim)}</div>
+                  <p className="hint">Do you believe it? Click below to challenge!</p>
+                </div>
+              )}
 
-              <button 
-                className="challenge-btn" 
+              <button
+                className="challenge-btn"
                 onClick={handleChallenge}
                 disabled={loading || systemClaim === 0}
               >
-                {loading ? '挑战中...' : '🎯 挑战！'}
+                {loading ? 'Challenging...' : '🎯 Challenge!'}
               </button>
             </div>
-            
+
             {result && (
               <div className="result-section success" style={{ whiteSpace: 'pre-wrap' }}>
                 {result}
@@ -157,18 +162,18 @@ function GamePage() {
                 ❌ {error}
               </div>
             )}
-            
+
             <div className="instructions">
-              <h3>游戏说明</h3>
-              <p>1. 系统已经秘密选择了一张牌</p>
-              <p>2. 系统公开声称是某张牌</p>
-              <p>3. 你可以挑战系统是否在说谎</p>
-              <p>4. FHE 技术将保证结果的公正性</p>
+              <h3>How to Play</h3>
+              <p>1. The system has secretly chosen a card.</p>
+              <p>2. It publicly claims to have a certain card.</p>
+              <p>3. You can challenge the system to see if it's lying.</p>
+              <p>4. FHE technology ensures the result is fair and verifiable.</p>
             </div>
           </div>
         ) : (
           <div className="please-connect-section">
-            <p>请先连接钱包开始游戏</p>
+            <p>Please connect your wallet to start the game</p>
           </div>
         )}
       </div>
