@@ -271,16 +271,16 @@ Follow these steps to set up and run the project on your local machine.
 ```
 nexus-social-dapp/
 ├── contracts/
-│   └── TheBlindArbiter.sol   # The main smart contract for the game logic.
+│   └── TheBlindArbiter.sol       # The main smart contract for the game logic
 ├── frontend/
 │   ├── src/
-│   │   ├── App.tsx           # The game page component (Dark Cards).
-│   │   ├── LandingPage.tsx   # The main landing page for Nexus Social.
-│   │   └── main.tsx          # App entry point with wallet/router setup.
+│   │   ├── App.tsx               # The game page component (Dark Cards)
+│   │   ├── LandingPage.tsx       # The main landing page for Nexus Social
+│   │   └── main.tsx              # App entry point with wallet/router setup
 ├── scripts/
-│   └── deploy.ts             # Script for deploying the smart contract.
-├── .env.example              # Example environment variables file.
-├── hardhat.config.ts         # Hardhat configuration.
-├── PRD-Nexus-Social-EN.md    # The detailed Product Requirements Document.
-└── package.json              # Root project dependencies.
+│   └── deploy.ts                 # Script for deploying the smart contract
+├── .env.example                  # Example environment variables file
+├── hardhat.config.ts             # Hardhat configuration
+├── PRD-Nexus-Social-EN.md        # The detailed Product Requirements Document
+└── package.json                  # Root project dependencies
 ```
