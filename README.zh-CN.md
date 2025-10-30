@@ -16,7 +16,7 @@
 
 -   **线上 Dapp**: [**https://nexus-social-dapp.vercel.app/**](https://nexus-social-dapp.vercel.app/)
 -   **创始人 X/Twitter**: [@Elf_YuSheng](https://x.com/Elf_YuSheng)
--   **Sepolia 智能合约地址**: [`0xc82996db14d66c70586E1670d44A0E89cED4aced`](https://sepolia.etherscan.io/address/0xc82996db14d66c70586E1670d44A0E89cED4aced)
+-   **Sepolia 智能合约地址**: [`0xDC7c62E6b174DBB266E5C180AD20719E7636a16e`](https://sepolia.etherscan.io/address/0xDC7c62E6b174DBB266E5C180AD20719E7636a16e)
 
 ---
 

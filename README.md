@@ -16,7 +16,7 @@ I joined the Zama community on December 7, 2024, and had been following the tech
 
 -   **Live Dapp**: [**https://nexus-social-dapp.vercel.app/**](https://nexus-social-dapp.vercel.app/)
 -   **Creator's X/Twitter**: [@Elf_YuSheng](https://x.com/Elf_YuSheng)
--   **Smart Contract on Sepolia**: [`0xc82996db14d66c70586E1670d44A0E89cED4aced`](https://sepolia.etherscan.io/address/0xc82996db14d66c70586E1670d44A0E89cED4aced)
+-   **Smart Contract on Sepolia**: [`0xDC7c62E6b174DBB266E5C180AD20719E7636a16e`](https://sepolia.etherscan.io/address/0xDC7c62E6b174DBB266E5C180AD20719E7636a16e)
 
 ---
 
