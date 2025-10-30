@@ -40,32 +40,6 @@ Crypto communities rely on events to boost engagement, but they consistently fac
 
 ---
 
-## 🃏 About the MVP: First Game "Dark Cards"
-
-To validate the core value of **Nexus Social** as a social event platform, our MVP (Minimum Viable Product) focuses on the platform's first game: **Dark Cards**. It's a classic social deduction game that perfectly showcases how FHE technology can solve trust issues in on-chain gaming.
-
-### How to Play: The Full Rules
-The soul of "Dark Cards" lies in information asymmetry and psychological bluffs between players.
--   **Objective**: To be the first player to get rid of all their cards.
--   **Core Loop**:
-    1.  **Play & Claim**: Players take turns playing **1 to N cards face-down** and **publicly claiming** what those cards are (e.g., "I played two Kings"). You can tell the truth or you can bluff.
-    2.  **Challenge or Trust**: Any other player can choose to **"challenge"** your claim. If no one challenges, the game continues.
-    3.  **On-Chain Resolution**: When a challenge occurs, the smart contract acts as a "Confidential Arbiter," using FHE to publicly resolve whether the claim was true or false—without ever revealing anyone's cards.
-        -   **Challenge Successful** (The claim was a bluff): The player who made the claim loses and must pick up all cards on the table.
-        -   **Challenge Failed** (The claim was true): The challenger loses and must pick up all cards on the table.
-
-### The MVP Version: A Minimalist Experience
-To let users directly experience the core fun of a "confidential resolution" powered by FHE, we have extremely simplified the MVP:
--   **Mode**: It's a **single-player challenge mode** where you play against the system (smart contract).
--   **Flow**:
-    1.  **System's Claim**: The system automatically makes a public "claim" on-chain (e.g., "I played an Ace").
-    2.  **Player's Challenge**: The UI presents one core button: **"Challenge!"**.
-    3.  **Instant Resolution**: Once clicked, the smart contract immediately uses its FHE logic to verify the claim and transparently returns the result (was the system bluffing or not?).
-
-This simplified MVP is designed to clearly demonstrate our product's core technical advantage and the immense potential for the future multiplayer social experience.
-
----
-
 ## 💼 Business Model & Growth Strategy
 
 ### Sustainable Growth Model
@@ -100,6 +74,32 @@ Unlike most Web3 projects, Nexus Social's growth **does not depend on token hype
 - Market gap for standardized "Social-Event-as-a-Service" platform
 
 > 📖 For more detailed business plans, user personas, and roadmap, see our **[Product Requirements Document (PRD)](./PRD-Nexus-Social-EN.md)**
+
+---
+
+## 🃏 About the MVP: First Game "Dark Cards"
+
+To validate the core value of **Nexus Social** as a social event platform, our MVP (Minimum Viable Product) focuses on the platform's first game: **Dark Cards**. It's a classic social deduction game that perfectly showcases how FHE technology can solve trust issues in on-chain gaming.
+
+### How to Play: The Full Rules
+The soul of "Dark Cards" lies in information asymmetry and psychological bluffs between players.
+-   **Objective**: To be the first player to get rid of all their cards.
+-   **Core Loop**:
+    1.  **Play & Claim**: Players take turns playing **1 to N cards face-down** and **publicly claiming** what those cards are (e.g., "I played two Kings"). You can tell the truth or you can bluff.
+    2.  **Challenge or Trust**: Any other player can choose to **"challenge"** your claim. If no one challenges, the game continues.
+    3.  **On-Chain Resolution**: When a challenge occurs, the smart contract acts as a "Confidential Arbiter," using FHE to publicly resolve whether the claim was true or false—without ever revealing anyone's cards.
+        -   **Challenge Successful** (The claim was a bluff): The player who made the claim loses and must pick up all cards on the table.
+        -   **Challenge Failed** (The claim was true): The challenger loses and must pick up all cards on the table.
+
+### The MVP Version: A Minimalist Experience
+To let users directly experience the core fun of a "confidential resolution" powered by FHE, we have extremely simplified the MVP:
+-   **Mode**: It's a **single-player challenge mode** where you play against the system (smart contract).
+-   **Flow**:
+    1.  **System's Claim**: The system automatically makes a public "claim" on-chain (e.g., "I played an Ace").
+    2.  **Player's Challenge**: The UI presents one core button: **"Challenge!"**.
+    3.  **Instant Resolution**: Once clicked, the smart contract immediately uses its FHE logic to verify the claim and transparently returns the result (was the system bluffing or not?).
+
+This simplified MVP is designed to clearly demonstrate our product's core technical advantage and the immense potential for the future multiplayer social experience.
 
 ---
 
@@ -219,12 +219,12 @@ Follow these steps to set up and run the project on your local machine.
     ```
 
 2.  **Install root dependencies:**
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 3.  **Install frontend dependencies:**
-    ```bash
+   ```bash
     cd frontend
     npm install
     cd ..
@@ -232,27 +232,27 @@ Follow these steps to set up and run the project on your local machine.
 
 4.  **Set up environment variables:**
     -   Create a `.env` file in the root directory by copying the example:
-        ```bash
+   ```bash
         cp .env.example .env
-        ```
+   ```
     -   Edit the `.env` file to add your Sepolia RPC URL and a private key for deployment.
 
 ### Running the Project
 
 1.  **Start a local Hardhat node:**
-    ```bash
-    npx hardhat node
-    ```
+   ```bash
+   npx hardhat node
+   ```
 
 2.  **Deploy the smart contract to the local node:**
     -   In a new terminal window:
-    ```bash
+   ```bash
     npx hardhat run scripts/deploy.ts --network localhost
-    ```
+   ```
     -   After deployment, copy the new contract address and update it in `frontend/src/App.tsx`.
 
 3.  **Start the frontend application:**
-    ```bash
+   ```bash
     cd frontend
     npm run dev
     ```
