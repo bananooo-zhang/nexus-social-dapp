@@ -66,6 +66,43 @@ This simplified MVP is designed to clearly demonstrate our product's core techni
 
 ---
 
+## 💼 Business Model & Growth Strategy
+
+### Sustainable Growth Model
+Unlike most Web3 projects, Nexus Social's growth **does not depend on token hype cycles**. Our core value lies in providing continuous social tools for all communities, so platform activity directly reflects the health of the entire partner community ecosystem. Regardless of market conditions, as long as communities need to host events, Nexus Social remains their top choice.
+
+### Three-Phase Development Strategy
+
+**🎯 Phase 1: Community Event Tool**
+- B2D (Business to DAO) strategy: Partner with major DAOs, NFT projects, and community leaders
+- Projects provide commemorative NFTs and point incentives to sponsor community tournaments
+- Quickly become synonymous with "convenient and simple" social events in Web3
+
+**💰 Phase 2: Commercialization Ecosystem**
+- **Tournament Commissions**: Provide technical support for prize pool tournaments and charge service fees
+- **Advertising Revenue**: Cross-community traffic value (Community A members see Community B events)
+- **In-Game Economy**: Token betting system, NFT card skins, etc.
+
+**🚀 Phase 3: Open Platform**
+- Modularize the "On-Chain Confidential Arbiter" engine and open it to all Web3 game developers
+- Become an incubator and infrastructure for Web3 social gaming innovation
+
+### SWOT Analysis Highlights
+
+**💪 Core Strengths**
+- **Founder Resources**: Strong influence and BD resources in Web3 (participated in KOL rounds for Aster, Nillion, etc.)
+- **Deep Market Understanding**: Product design oriented toward solving real pain points, not just tech showcase
+- **Growth Flywheel**: Community manager invitation mechanism where member participation earns managers points, incentivizing KOL promotion
+
+**🎯 Market Opportunities**
+- Mainstream Web3 communities (Monad, SaharaLabsAI, etc.) have high-frequency event needs
+- Current solutions have obvious pain points: fragmented platforms, difficult data management, high trust costs
+- Market gap for standardized "Social-Event-as-a-Service" platform
+
+> 📖 For more detailed business plans, user personas, and roadmap, see our **[Product Requirements Document (PRD)](./PRD-Nexus-Social-EN.md)**
+
+---
+
 ## 🔐 FHE Technology Architecture: How We Achieve Confidential Fairness
 
 ### The Core Innovation: On-Chain Confidential Comparison
