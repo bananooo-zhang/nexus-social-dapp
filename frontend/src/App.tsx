@@ -47,7 +47,10 @@ function GamePage() {
   }, [fhevmInstance]);
 
   const initializationText = useMemo(() => {
-    if (fhevmError) return `FHE Error: ${fhevmError.message}`;
+    // Filter out the RelayerSDKLoader error as it's a known transient issue that auto-recovers
+    if (fhevmError && !fhevmError.message.includes('RelayerSDKLoader')) {
+      return `FHE Error: ${fhevmError.message}`;
+    }
     switch (fhevmStatus) {
       case 'loading': return 'Loading FHE libraries...';
       case 'ready': return 'FHE instance is ready!';
