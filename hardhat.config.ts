@@ -1,52 +1,42 @@
-import "@fhevm/hardhat-plugin";
-import "@nomicfoundation/hardhat-chai-matchers";
-import "@nomicfoundation/hardhat-ethers";
-import "@nomicfoundation/hardhat-verify";
-import "@typechain/hardhat";
-import "hardhat-deploy";
-import "hardhat-gas-reporter";
 import "dotenv/config";
-import type { HardhatUserConfig } from "hardhat/config";
-import "solidity-coverage";
+import { HardhatUserConfig } from "hardhat/config";
+import "@typechain/hardhat";
+import "@nomicfoundation/hardhat-ethers";
+import "@nomicfoundation/hardhat-chai-matchers";
+import "hardhat-deploy";
 
-import "./tasks/debug";
-
-// 从 .env 文件加载环境变量
-const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
-const SEPOLIA_PRIVATE_KEY = process.env.SEPOLIA_PRIVATE_KEY;
-
-// 校验环境变量是否存在
-if (!SEPOLIA_RPC_URL) {
-  throw new Error(
-    "请在 .env 文件中设置 SEPOLIA_RPC_URL"
-  );
+// Ensure that environment variables are set
+if (!process.env.ALCHEMY_SEPOLIA_URL) {
+  throw new Error("Please set your ALCHEMY_SEPOLIA_URL in a .env file");
+}
+if (!process.env.SEPOLIA_PRIVATE_KEY) {
+  throw new Error("Please set your SEPOLIA_PRIVATE_KEY in a .env file");
 }
 
-if (!SEPOLIA_PRIVATE_KEY) {
-  throw new Error(
-    "请在 .env 文件中设置 SEPOLIA_PRIVATE_KEY"
-  );
-}
-        
 const config: HardhatUserConfig = {
-  defaultNetwork: "hardhat",
   solidity: "0.8.24",
   networks: {
     hardhat: {
-      chainId: 31337,
+      live: false,
+      saveDeployments: true,
+      tags: ["local"],
+    },
+    localhost: {
+      url: "http://127.0.0.1:8545",
     },
     sepolia: {
-      url: SEPOLIA_RPC_URL,
-      accounts: [SEPOLIA_PRIVATE_KEY],
-      chainId: 11155111,
+      url: process.env.ALCHEMY_SEPOLIA_URL,
+      accounts: [process.env.SEPOLIA_PRIVATE_KEY],
+      saveDeployments: true,
+      tags: ["staging"],
     },
   },
-  paths: {
-    artifacts: "./artifacts",
-    cache: "./cache",
-    sources: "./contracts",
-    tests: "./test",
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    },
   },
 };
 
 export default config;
+
