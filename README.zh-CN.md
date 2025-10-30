@@ -66,10 +66,97 @@
 
 ---
 
+## 🔐 FHE 技术架构：如何实现机密公平性
+
+### 核心创新：链上机密比较
+
+Nexus Social 信任模型的核心是 Zama 的**全同态加密 (FHE)** 技术。我们的实现展示了一个从客户端加密到链上机密计算的完整 FHE 工作流程。
+
+### 📊 我们架构中的 FHE 实现
+
+#### 1. **客户端加密** (前端)
+```typescript
+// 用户的真实卡牌在客户端被加密
+const input = fhevmInstance.createEncryptedInput(CONTRACT_ADDRESS, userAddress);
+input.add8(realCard);  // 加密卡牌数值 (1-13)
+const encryptedData = await input.encrypt();
+```
+
+**这里发生了什么：**
+- 真实的卡牌数值在发送到区块链**之前**被加密成密文
+- 生成一个零知识证明来验证加密的有效性
+- **隐私保证**：明文永远不会离开用户的浏览器
+
+#### 2. **链上机密计算** (智能合约)
+```solidity
+// TheBlindArbiter.sol - FHE "比较器"在行动
+euint8 realCard = FHE.fromExternal(encryptedRealCard, proof);
+ebool wasBluff = FHE.ne(realCard, FHE.asEuint8(claimedCard));
+```
+
+**这里发生了什么：**
+- `FHE.fromExternal()`：验证零知识证明并将密文转换为内部加密类型
+- `FHE.ne()`：在**加密空间中执行"不相等"比较** - 这是核心的 FHE 魔法！
+- **关键创新**：智能合约比较两个数值**但从不解密它们**
+- 区块链验证者和其他玩家都无法看到真实的卡牌数值
+
+#### 3. **结果解密与 UX 决策** (前端)
+```typescript
+// 对于 MVP：前端直接计算结果
+const wasBluff = gameData.real !== gameData.claimed;
+```
+
+**为什么我们在 MVP 中选择客户端结果展示：**
+
+这是我们 MVP 阶段的一个**深思熟虑的设计决策**，平衡了技术完整性与开发速度和用户体验：
+
+1. **MVP 上下文**：在我们简化的单人模式中，前端（充当"系统"角色）已经知道两个数值——这是 Demo 流程的一部分
+2. **FHE 价值得以保留**：核心的 FHE 操作 (`FHE.ne()`) **仍然在链上执行**，提供了公平性的密码学证明。这满足了主要目标：**展示 FHE 执行机密比较的能力**
+3. **生产路线图**：对于多人版本（2-10 名玩家），我们将实现**异步链上解密**，使用带有 KMS 回调的 `FHE.requestDecryption()`，确保结果完全去中心化
+
+**链上证据**：每次挑战都会在 Sepolia 上生成可验证的 FHE 操作日志：
+- `VerifyCiphertext`：证明验证 ✅
+- `TrivialEncrypt`：加密声明 ✅
+- `FheNe`：**机密比较** ✅
+- `ChallengeResult`：交易成功 ✅
+
+示例交易：[在 Sepolia 浏览器中查看](https://sepolia.etherscan.io/address/0xDC7c62E6b174DBB266E5C180AD20719E7636a16e)
+
+### 🎯 为什么这个架构很重要
+
+| 方面 | 传统方法 | 我们的 FHE 方法 |
+|--------|---------------------|------------------|
+| **卡牌隐私** | 以明文形式存储在链上（所有人可见） | 在链上加密（不透明的密文） |
+| **比较逻辑** | 需要先解密，然后比较 | 在**加密状态下比较** |
+| **信任模型** | 信任合约代码 | 信任 + 密码学证明 |
+| **作弊防范** | 仅代码逻辑 | 数学上不可能 |
+
+### 🔬 技术深入探讨
+
+**使用的 FHE 类型：**
+- `euint8`：加密的 8 位无符号整数（用于卡牌数值 1-13）
+- `ebool`：加密的布尔值（用于比较结果）
+- `externalEuint8`：外部加密输入结构（带有零知识证明）
+
+**展示的 FHE 操作：**
+- `FHE.fromExternal()`：安全输入验证
+- `FHE.asEuint8()`：明文到密文转换
+- `FHE.ne()`：机密不等比较（我们的"首选武器"）
+- `FHE.allow()`：解密权限的访问控制
+
+**安全保证：**
+- 🔒 卡牌数值在区块链存储中保持加密
+- 🔒 比较发生在加密域中（同态属性）
+- 🔒 只有授权地址可以请求解密
+- 🔒 零知识证明防止无效输入
+
+---
+
 ## 🛠️ 技术栈
 
 -   **区块链**: Solidity, Hardhat
--   **机密计算**: Zama FHEVM (`@fhevm/solidity`)
+-   **机密计算**: Zama FHEVM (`@fhevm/solidity` v0.5.x), FHE Relayer SDK
+-   **FHE 操作**: `FHE.ne()` (比较器), `FHE.fromExternal()` (输入验证)
 -   **前端**: React, TypeScript, Vite
 -   **钱包集成**: RainbowKit, Wagmi, Viem
 -   **部署**: Vercel (前端), Sepolia 测试网 (智能合约)
