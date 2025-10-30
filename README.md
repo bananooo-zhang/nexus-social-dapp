@@ -18,6 +18,12 @@ I joined the Zama community on December 7, 2024, and had been following the tech
 -   **Creator's X/Twitter**: [@Elf_YuSheng](https://x.com/Elf_YuSheng)
 -   **Smart Contract on Sepolia**: [`0xDC7c62E6b174DBB266E5C180AD20719E7636a16e`](https://sepolia.etherscan.io/address/0xDC7c62E6b174DBB266E5C180AD20719E7636a16e)
 
+### 📺 Project Walkthrough Video
+
+[![Nexus Social - Project Walkthrough](https://img.youtube.com/vi/psbV0_uVM3U/maxresdefault.jpg)](https://www.youtube.com/watch?v=psbV0_uVM3U)
+
+**[► Watch Full Walkthrough](https://www.youtube.com/watch?v=psbV0_uVM3U)** - Learn about Nexus Social's vision, technical architecture, and business model
+
 ---
 
 ## 🎯 The Vision: A Sustainable Social Hub for Web3

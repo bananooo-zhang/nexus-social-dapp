@@ -18,6 +18,12 @@
 -   **创始人 X/Twitter**: [@Elf_YuSheng](https://x.com/Elf_YuSheng)
 -   **Sepolia 智能合约地址**: [`0xDC7c62E6b174DBB266E5C180AD20719E7636a16e`](https://sepolia.etherscan.io/address/0xDC7c62E6b174DBB266E5C180AD20719E7636a16e)
 
+### 📺 项目讲解视频
+
+[![Nexus Social - 项目讲解](https://img.youtube.com/vi/psbV0_uVM3U/maxresdefault.jpg)](https://www.youtube.com/watch?v=psbV0_uVM3U)
+
+**[► 观看完整讲解视频](https://www.youtube.com/watch?v=psbV0_uVM3U)** - 了解 Nexus Social 的产品愿景、技术架构和商业模式
+
 ---
 
 ## 🎯 愿景：一个可持续的 Web3 社交中心
