@@ -36,9 +36,15 @@ function LandingPage() {
         </div>
         <div className="hero-visual">
           <div className="card-stack">
-            <div className="card card-1">🃏</div>
-            <div className="card card-2">🎴</div>
-            <div className="card card-3">🂠</div>
+            <div className="card card-1">
+              <img src="/zama-logo.svg" alt="Zama" className="card-logo" />
+            </div>
+            <div className="card card-2">
+              <img src="/zama-logo.svg" alt="Zama" className="card-logo" />
+            </div>
+            <div className="card card-3">
+              <img src="/zama-logo.svg" alt="Zama" className="card-logo" />
+            </div>
           </div>
         </div>
       </section>
