@@ -2,9 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useWalletClient, usePublicClient, useChainId } from 'wagmi';
-import { parseAbi, Hex, toHex } from 'viem';
+import { parseAbi } from 'viem';
 import { useFhevm } from './lib/fhevm/useFhevm'; // Import the new hook
-import type { FhevmInstance } from './lib/fhevm/fhevmTypes';
 
 import './App.css';
 
@@ -104,7 +103,7 @@ function GamePage() {
         address: CONTRACT_ADDRESS,
         abi: contractAbi,
         functionName: 'challenge',
-        args: [encryptedRealCard, proof, gameData.claimed],
+        args: [encryptedRealCard as `0x${string}`, proof as `0x${string}`, gameData.claimed],
         account: address,
       });
 
