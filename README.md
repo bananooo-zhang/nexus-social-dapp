@@ -268,7 +268,7 @@ Follow these steps to set up and run the project on your local machine.
 
 ## 📂 Project Structure
 
-```
+```plaintext
 nexus-social-dapp/
 ├── contracts/
 │   └── TheBlindArbiter.sol       # The main smart contract for the game logic
